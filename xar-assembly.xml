@@ -2,14 +2,12 @@
 <package xmlns="http://expath.org/ns/pkg" name="${package-name}" abbrev="${package-abbrev}" version="${project.version}"
     spec="1.0">
     <title>${package-title}</title>
-    <author id="my-organisation">My Organisation</author>
+    <author id="eXist-db">eXist-db</author>
     <website>${project.url}</website>
     <license>GNU Lesser General Public License, version 2.1</license>
     <copyright>true</copyright>
 
-    <!-- should be either "application" or "library" -->
-    <type>application</type>
-    <!-- type>library</type -->
+    <type>library</type>
 
     <status>stable</status>
 
@@ -23,7 +21,6 @@
     <target>${package-abbrev}</target>
 
     <prepare>pre-install.xq</prepare>
-    <finish>post-install.xq</finish>
 
     <!-- includes everything in src/main/xar-resources, README.md, and LICENSE -->
     <fileSets>
@@ -42,10 +39,18 @@
     <!-- include the XQuery Library modules written in XQuery from this project -->
     <xquerySets>
         <xquerySet>
-            <namespace>https://my-organisation.com/exist-db/ns/app/my-xquery-module</namespace>
+            <namespace>http://www.w3.org/2005/07/scxml</namespace>
             <directory>${basedir}/src/main/xquery</directory>
             <includes>
-                <include>example-module.xqm</include>
+                <include>scxml.xqm</include>
+            </includes>
+            <outputDirectory>content</outputDirectory>
+        </xquerySet>
+        <xquerySet>
+            <namespace>http://www.w3.org/2005/07/scxml/extension/</namespace>
+            <directory>${basedir}/src/main/xquery</directory>
+            <includes>
+                <include>scxml_extension.xqm</include>
             </includes>
             <outputDirectory>content</outputDirectory>
         </xquerySet>
@@ -53,19 +58,10 @@
 
     <!-- include the XQuery Library Module written in Java (JAR output) from this project -->
     <dependencySets>
-        <dependencySet>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>${project.artifactId}</artifactId>
-            <version>${project.version}</version>
-        </dependencySet>
     </dependencySets>
 
     <!-- register the Java module to eXist-db -->
     <components>
-        <resource>
-            <public-uri>${example.module.namespace}</public-uri>
-            <file>urn:java:class:org.exist.${example.module.java.classname}</file>
-        </resource>
     </components>
 
 </package>
