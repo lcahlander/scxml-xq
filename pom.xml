@@ -15,9 +15,9 @@
     <artifactId>scxml-xq</artifactId>
     <version>1.0</version>
 
-    <name>SCXML-XQ</name>
+    <name>SCXML-XQ Library</name>
     <description>XQuery functions for the interpretation of State Chart XML</description>
-    <url>https://exist-db.org/scxml/app</url>
+    <url>https://exist-db.org/scxml</url>
 
     <organization>
         <name>eXist-db</name>
@@ -51,7 +51,7 @@
         <exist.version>5.0.0</exist.version>
 
         <!-- used in the EXPath Package Descriptor -->
-        <package-name>https://exist-db.org/scxml/app</package-name>
+        <package-name>https://exist-db.org/scxml</package-name>
     </properties>
 
     <dependencies>
